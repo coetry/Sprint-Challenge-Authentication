@@ -29,15 +29,30 @@ async function register(req, res) {
       .where('id', '=', ids[0])
       .first()
 
-    res.status(200).json(generateUserToken(user))
+    res.status(200).send(generateUserToken(user))
     
   } catch (err) {
     res.status(500).json(err.message)
   }
 }
 
-function login(req, res) {
-  // implement user login
+async function login(req, res) {
+  if (!req.body || !req.body.username || !req.body.password) {
+  }
+  try { 
+    const user = await db('users')  
+      .where('username', '=', req.body.username)
+      .first()
+    const success = await bcrypt.compare(
+      req.body.password,
+      user.password
+    )
+    success
+      ? res.status(200).send(generateUserToken(user))
+      : res.status(401).send('invalid credentials')
+  } catch (err) {
+    res.status(500).json(err.message)
+  }
 }
 
 function generateUserToken(user) {
