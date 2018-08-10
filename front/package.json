@@ -1,0 +1,24 @@
+{
+  "name": "front",
+  "description": "front-end for Authentication sprint",
+  "version": "0.0.0",
+  "repository": {
+    "url": "git://github.com/coetry/front.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "bankai start index.js",
+    "inspect": "bankai inspect index.js",
+    "build": "bankai build index.js"
+  },
+  "dependencies": {
+    "choo": "^6.13.0",
+    "sheetify": "^7.3.3",
+    "tachyons": "^4.11.1"
+  },
+  "devDependencies": {
+    "bankai": "^9.14.0",
+    "choo-devtools": "^2.5.1"
+  },
+  "author": "Allen Hai <allenhai03@gmail.com> (https://allenhai.now.sh)"
+}
